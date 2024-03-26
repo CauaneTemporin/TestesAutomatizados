@@ -14,14 +14,13 @@ class BonusServiceTest {
 	void bonusDeveriaSerZeroParaFuncionarioComSalarioMuitoAlto() {
 		BonusService service = new BonusService();
 		BigDecimal bonus = service.calcularBonus(new Funcionario("Cauane", LocalDate.now(), new BigDecimal("25000")));
-		Assertions.assertEquals(BigDecimal.ZERO, bonus);
+		Assertions.assertEquals(new BigDecimal("0.00"), bonus);
 	}
 	
 	@Test
 	void bonusDeveriaSer10PorCentoDoSalario() {
 		BonusService service = new BonusService();
 		BigDecimal bonus = service.calcularBonus(new Funcionario("Cauane", LocalDate.now(), new BigDecimal("2500")));
-		Assertions.assertEquals(new BigDecimal("250.0"), bonus);
+		Assertions.assertEquals(new BigDecimal("250.00"), bonus);
 	}
-
 }
