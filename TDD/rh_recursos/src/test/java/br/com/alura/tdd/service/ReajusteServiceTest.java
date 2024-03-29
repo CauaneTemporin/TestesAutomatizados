@@ -17,6 +17,6 @@ public class ReajusteServiceTest {
 		Funcionario funcionario = new Funcionario("Cauane", LocalDate.now(), new BigDecimal("1000.00"));
 		
 		service.concederReajuste(funcionario, Desepenho.A_DESEJAR);
-		Assertions.assertEquals(new BigDecimal(1030.00), funcionario.getSalario());
+		Assertions.assertEquals(new BigDecimal("1030.00"), funcionario.getSalario());
 	}
 }
