@@ -10,12 +10,19 @@ import br.com.alura.tdd.modelo.Funcionario;
 
 class BonusServiceTest {
 
+	
+
 	@Test
 	void bonusDevceriaSerZeroParaFuncionarioComSalarioMuitoAlto() {
-		BonusService service = new BonusService();
-		Assertions.assertThrows(IllegalArgumentException.class,
-				() -> service.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal("25000"))));
-	}
+	        BonusService service = new BonusService();
+	        try {
+	                service.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal("25000")));
+	                Assertions.fail ("Não deu a exception!");
+	        } catch (Exception e) {
+	        	Assertions.assertEquals("Funcionario com salario maior do que R$10000 nao pode receber bonus!", e.getMessage());
+	        }
+
+	    }
 
 	@Test
 	void bonusDeveriaSer10PorCentoDoSalario() {
